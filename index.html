@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$BONDAGE – Bondage Coin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4A017;
+      --gold-light: #F2C94C;
+      --gold-bright: #E8B84B;
+      --gold-dark: #A07800;
+      --bg-dark: #1E1E1E;
+      --parchment: #C8A96A;
+      --black: #111111;
+      --white: #FFFDF0;
+      --rope: #8B6914;
+      --cream: #F5E6C0;
+      --accent-pink: #FF6B9D;
+      --footer-gold: #E8A820;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg-dark);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='8' stroke='%23D4A017' stroke-width='2' fill='none'/%3E%3Ccircle cx='10' cy='10' r='3' fill='%23D4A017'/%3E%3C/svg%3E") 10 10, crosshair;
+    }
+
+    /* ══════════════════════════════
+       HERO SECTION  (~45vh)
+    ══════════════════════════════ */
+    #hero {
+      position: relative;
+      flex: 0 0 45vh;
+      background: #C8A86A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 40px;
+    }
+
+    /* Sunrays */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-conic-gradient(
+              from 0deg at 58% 50%,
+              rgba(255,230,120,0.10) 0deg,
+              transparent 3deg,
+              transparent 10deg
+      );
+      pointer-events: none;
+    }
+
+    /* Subtle light center */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 58% 50%, rgba(255,245,180,0.30) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+      max-width: 1280px;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── LEFT ── */
+    .hero-left { text-align: left; display: flex; flex-direction: column; justify-content: center; }
+
+    .hero-logo-text {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .logo-dollar {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      color: var(--gold-light);
+      -webkit-text-stroke: 4px #2E1A00;
+      paint-order: stroke fill;
+      text-shadow: 5px 5px 0 #2E1A00;
+      letter-spacing: 1px;
+    }
+
+    .logo-sub {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+      color: var(--gold-light);
+      -webkit-text-stroke: 2.5px #2E1A00;
+      paint-order: stroke fill;
+      text-shadow: 4px 4px 0 #2E1A00;
+      letter-spacing: 4px;
+      margin-top: -6px;
+      margin-left: 6px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      color: #2E1A00;
+      margin: 0 0 18px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-hero {
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.9rem;
+      padding: 9px 20px;
+      background: #1A1A1A;
+      color: #F5E6C0;
+      border: 2px solid #1A1A1A;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+      box-shadow: 0 3px 0 rgba(0,0,0,0.5);
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .btn-hero:hover { background: #333; transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,0.5); }
+    .btn-hero:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,0.5); }
+
+    /* ── CENTER COIN ── */
+    .coin-wrapper {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+      /* coin bleeds slightly into mid section */
+    }
+
+    .coin-mascot {
+      position: relative;
+      width: clamp(280px, 30vw, 480px);
+      /* sit at bottom so it overflows slightly downward */
+      margin-bottom: -2vh;
+      animation: coinFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
+    }
+
+    .coin-mascot img { width: 100%; height: auto; display: block; }
+
+    @keyframes coinFloat {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+
+    /* Speech bubble */
+    .speech-bubble {
+      position: absolute;
+      top: -20px; right: -40px;
+      background: white;
+      border: 3px solid #1A1A1A;
+      border-radius: 24px;
+      padding: 10px 24px;
+      font-family: 'Bangers', cursive;
+      font-size: 2rem;
+      color: #1A1A1A;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      box-shadow: 4px 4px 0 #1A1A1A;
+      animation: bubbleWiggle 2s ease-in-out infinite;
+      z-index: 3;
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -17px; left: 24px;
+      border: 10px solid transparent;
+      border-top-color: white;
+      filter: drop-shadow(2px 3px 0 #1A1A1A);
+    }
+    @keyframes bubbleWiggle {
+      0%, 100% { transform: rotate(-2deg) scale(1); }
+      50% { transform: rotate(2deg) scale(1.03); }
+    }
+
+    /* ── RIGHT FEATURES ── */
+    .hero-features {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .feature-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      width: 46px; height: 46px;
+      background: transparent;
+      border: 2px solid #2E1A00;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .feature-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.95rem;
+      color: #1E1000;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .feature-desc {
+      font-size: 0.78rem;
+      color: #4A3010;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* ══════════════════════════════
+       MIDDLE SECTION  (3 columns, dark)
+    ══════════════════════════════ */
+    #mid {
+      flex: 1 1 0;
+      background: #1E1E1E;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .mid-col {
+      padding: 28px 32px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* dividers */
+    .mid-col:not(:last-child) {
+      border-right: 1px solid rgba(200,150,30,0.15);
+    }
+
+    .mid-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      letter-spacing: 3px;
+      color: var(--gold-bright);
+      text-shadow: 3px 3px 0 var(--gold-dark);
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT COL ── */
+    .about-col .about-text {
+      font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+      color: #D4B870;
+      line-height: 1.65;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .about-col .about-text .struggle { color: var(--accent-pink); font-style: italic; }
+
+    .about-coin-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .about-coin-img {
+      width: clamp(120px, 13vw, 200px);
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+      animation: coinFloat 4s ease-in-out infinite 0.5s;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.3rem;
+      animation: heartFloat 2.5s ease-in-out infinite;
+    }
+    @keyframes heartFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-10px) scale(1.2); opacity: 0.7; }
+    }
+
+    /* ── TOKENOMICS COL ── */
+    .token-table {
+      flex: 1;
+      background: rgba(0,0,0,0.3);
+      border: 1.5px solid rgba(212,160,23,0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .token-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(212,160,23,0.08);
+      font-size: clamp(0.72rem, 1vw, 0.88rem);
+    }
+    .token-row:last-child { border-bottom: none; }
+
+    .token-label { color: var(--gold-bright); font-weight: 700; font-family: 'Fredoka One', cursive; }
+    .token-value { color: #E8C98A; font-weight: 700; text-align: right; }
+
+    /* ── ROADMAP COL ── */
+    .roadmap-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+      color: #E8C98A;
+    }
+
+    .roadmap-icon {
+      width: 22px; height: 22px;
+      border: 2px solid var(--gold-bright);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .roadmap-check { color: #4CAF50; font-size: 1rem; }
+    .roadmap-note {
+      font-size: 0.7rem;
+      color: rgba(232,201,138,0.5);
+      margin-top: 8px;
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.4;
+    }
+
+    .help-coin-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 8px;
+    }
+    .help-coin-img {
+      width: clamp(120px, 14vw, 210px);
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+    }
+
+    .roadmap-col { position: relative; padding-right: 140px; }
+    .world-coin-img {
+      position: absolute;
+      bottom: -8px;
+      right: -10px;
+      width: clamp(160px, 18vw, 260px);
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+    }
+
+    /* ══════════════════════════════
+       FOOTER BAR
+    ══════════════════════════════ */
+    #footer {
+      flex: 0 0 auto;
+      background: var(--footer-gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      overflow: hidden;
+      gap: 20px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .footer-coin-img {
+      height: clamp(60px, 9vh, 100px);
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+
+    .footer-tagline {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1rem, 1.9vw, 1.5rem);
+      color: #1A1000;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer-coin-right {
+      height: clamp(60px, 9vh, 100px);
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+
+    .footer-community {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .footer-community-label {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+      color: #1A1000;
+      font-weight: 700;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icon {
+      width: clamp(28px, 3vw, 38px);
+      height: clamp(28px, 3vw, 38px);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.25);
+      font-weight: 900;
+    }
+    .social-icon:hover { transform: translateY(-2px) scale(1.1); }
+    .social-tg { background: #229ED9; color: white; }
+    .social-x  { background: #1A1A1A; color: white; }
+    .social-dc { background: #5865F2; color: white; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-content">
+
+    <!-- LEFT: logo + tagline + buttons -->
+    <div class="hero-left">
+      <div class="hero-logo-text">
+        <span class="logo-dollar">$BONDAGE</span>
+        <span class="logo-sub">Bondage Coin</span>
+      </div>
+      <p class="hero-tagline">The most tightly held coin<br>on the blockchain.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-hero">🪙 BUY $BONDAGE</a>
+        <a href="#" class="btn-hero">📊 CHART</a>
+        <a href="#" class="btn-hero">✈️ JOIN COMMUNITY</a>
+      </div>
+    </div>
+
+    <!-- CENTER: coin mascot (bleeds into mid) -->
+    <div class="coin-wrapper">
+      <div class="coin-mascot">
+        <div class="speech-bubble">Yameteee~!!</div>
+        <img src="public/BondageCoin.png" alt="$BONDAGE mascot" />
+      </div>
+    </div>
+
+    <!-- RIGHT: features -->
+    <div class="hero-features">
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <div>
+          <div class="feature-title">TIGHT COMMUNITY</div>
+          <div class="feature-desc">We stick together.</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div>
+          <div class="feature-title">LP LOCKED</div>
+          <div class="feature-desc">Throw away the key.</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💎</div>
+        <div>
+          <div class="feature-title">NO CHAIN,<br>ONLY GAIN</div>
+          <div class="feature-desc">Just vibes.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ MID: 3-column dark ══ -->
+<div id="mid">
+
+  <!-- ABOUT -->
+  <div class="mid-col about-col">
+    <div class="mid-title">BORN TO BE BOUND</div>
+    <p class="about-text">
+      $BONDAGE isn't just a coin.<br>
+      It's a lifestyle.<br>
+      We don't chase pumps,<br>
+      we enjoy the <span class="struggle">struggle.</span>
+    </p>
+    <div class="about-coin-wrap">
+      <span class="heart" style="top:5%; left:8%; animation-delay:0s;">💗</span>
+      <span class="heart" style="top:0%; right:10%; animation-delay:0.6s;">💛</span>
+      <span class="heart" style="bottom:5%; left:5%; animation-delay:1.2s;">💗</span>
+      <img src="public/BondageCoin_BornToBeBound.png" alt="Bondage Coin" class="about-coin-img" />
+    </div>
+  </div>
+
+  <!-- TOKENOMICS -->
+  <div class="mid-col">
+    <div class="mid-title">TOKENOMICS</div>
+    <div class="token-table">
+      <div class="token-row">
+        <span class="token-label">Total Supply</span>
+        <span class="token-value">696,969,696</span>
+      </div>
+      <div class="token-row">
+        <span class="token-label">Tax</span>
+        <span class="token-value">0%</span>
+      </div>
+      <div class="token-row">
+        <span class="token-label">LP Locked</span>
+        <span class="token-value">100%</span>
+      </div>
+      <div class="token-row">
+        <span class="token-label">Contract Renounced</span>
+        <span class="token-value">Yes</span>
+      </div>
+      <div class="token-row">
+        <span class="token-label">Dev</span>
+        <span class="token-value">Just a degenerate</span>
+      </div>
+    </div>
+    <div class="help-coin-wrap">
+      <img src="public/BondageCoin_Help.png" alt="Help" class="help-coin-img" />
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="mid-col roadmap-col">
+    <div class="mid-title">ROADMAP*</div>
+    <div class="roadmap-list">
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🔗</div>
+        Phase 1: Launch <span class="roadmap-check">✅</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🔗</div>
+        Phase 2: Meme Everywhere <span class="roadmap-check">✅</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🔗</div>
+        Phase 3: Exchange Listings <span class="roadmap-check">✅</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🔗</div>
+        Phase 4: World Domination (maybe)
+      </div>
+      <p class="roadmap-note">*Roadmap subject to change.<br>Probably won't.</p>
+    </div>
+    <img src="public/BondageCoin_World.png" alt="World Domination" class="world-coin-img" />
+  </div>
+
+</div>
+
+<!-- ══ FOOTER BAR ══ -->
+<div id="footer">
+  <!-- Left: coin + tagline -->
+  <div class="footer-left">
+    <img src="public/BondageCoin_SunGlasses.png" alt="Bondage Coin" class="footer-coin-img" />
+    <div class="footer-tagline">NOT FINANCIAL ADVICE.<br>JUST FINANCIAL FETISH.</div>
+  </div>
+
+  <!-- Right: coin + UwU + socials -->
+  <div class="footer-right">
+    <img src="public/BondageCoin_Uwu.png" alt="UwU" class="footer-coin-right" />
+    <div class="footer-community">
+      <div class="footer-community-label">Join the community!</div>
+      <div class="social-icons">
+        <a href="#" class="social-icon social-tg" title="Telegram">✈</a>
+        <a href="#" class="social-icon social-x" title="X / Twitter">𝕏</a>
+        <a href="#" class="social-icon social-dc" title="Discord">🎮</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mascot hover
+  const coin = document.querySelector('.coin-mascot');
+  if (coin) {
+    coin.addEventListener('mouseenter', () => {
+      coin.style.filter = 'drop-shadow(0 20px 30px rgba(0,0,0,0.4)) drop-shadow(0 0 25px rgba(212,160,23,0.5))';
+      coin.style.transform = 'scale(1.06) rotate(4deg)';
+      coin.style.transition = 'all 0.3s';
+    });
+    coin.addEventListener('mouseleave', () => {
+      coin.style.filter = 'drop-shadow(0 20px 30px rgba(0,0,0,0.4))';
+      coin.style.transform = '';
+      coin.style.transition = 'all 0.4s';
+    });
+  }
+</script>
+</body>
+</html>
