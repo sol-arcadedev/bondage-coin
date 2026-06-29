@@ -83,22 +83,24 @@
 
     /* ── Mid section title ── */
     .mid-title {
-      font-family: 'Bangers', cursive;
-      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-      letter-spacing: 3px;
-      color: #E8B84B;
-      text-shadow: 3px 3px 0 #A07800;
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.9rem, 2.9vw, 2.7rem);
+      letter-spacing: 1px;
+      color: #F2C94C;
+      -webkit-text-stroke: 3px #2E1A00;
+      paint-order: stroke fill;
+      text-shadow: 4px 4px 0 #2E1A00;
       flex-shrink: 0;
       margin-bottom: 14px;
     }
 
     /* ── Roadmap icon circles ── */
     .roadmap-icon {
-      width: 22px; height: 22px;
+      width: 32px; height: 32px;
       border: 2px solid #E8B84B;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.55rem;
+      font-size: 0.85rem;
       flex-shrink: 0;
     }
 
@@ -141,8 +143,7 @@
      HERO  (~45vh)
 ══════════════════════════════ -->
 <section id="hero" class="relative flex-none" style="height:45vh; min-height:280px;">
-  <div class="relative z-10 h-full max-w-7xl mx-auto px-8 grid items-center"
-       style="grid-template-columns: 1fr auto 1fr; gap: 24px;">
+  <div class="relative z-10 h-full w-full px-8 flex items-center justify-between gap-6">
 
     <!-- LEFT: logo + tagline + buttons -->
     <div class="flex flex-col justify-center">
@@ -172,7 +173,7 @@
 
     <!-- CENTER: coin mascot -->
     <div class="relative flex items-end justify-center h-full">
-      <div class="coin-float relative" style="width:clamp(240px,28vw,440px); margin-bottom:-2vh;
+      <div class="coin-float relative" style="width:min(clamp(240px,26vw,420px), 40vh); margin-bottom:-2vh;
                     filter:drop-shadow(0 20px 30px rgba(0,0,0,0.4));">
         <!-- Speech bubble -->
         <div class="speech-bubble bubble-wiggle absolute bg-white border-[3px] border-[#1A1A1A] rounded-3xl px-6 py-2
@@ -180,7 +181,7 @@
              style="top:-20px; right:-40px; letter-spacing:2px;">
           Yameteee~!!
         </div>
-        <img src="public/BondageCoin.png" alt="$BONDAGE mascot" class="w-full h-auto block" />
+        <img src="public/BondageCoin_Without_Bubble.png" alt="$BONDAGE mascot" class="w-full h-auto block" />
       </div>
     </div>
 
@@ -239,7 +240,7 @@
   <div class="flex flex-col px-8 py-6 overflow-hidden border-r border-gold/10">
     <div class="mid-title">BORN TO BE BOUND</div>
     <p class="text-[#D4B870] font-bold text-center leading-relaxed mb-3"
-       style="font-size:clamp(0.78rem,1.1vw,0.92rem);">
+       style="font-size:clamp(0.82rem,1.1vw,1rem);">
       $BONDAGE isn't just a coin.<br>
       It's a lifestyle.<br>
       We don't chase pumps,<br>
@@ -259,76 +260,76 @@
   <div class="flex flex-col px-8 py-6 overflow-hidden border-r border-gold/10">
     <div class="mid-title">TOKENOMICS</div>
     <!-- Table -->
-    <div class="flex-1 flex flex-col justify-center bg-black/30 border border-gold/20 rounded-2xl overflow-hidden">
-      <div class="token-row flex justify-between items-center px-5 py-2.5 border-b border-gold/10"
-           style="font-size:clamp(0.72rem,1vw,0.88rem);">
+    <div class="flex-shrink-0 flex flex-col bg-black/30 border border-gold/20 rounded-2xl overflow-hidden">
+      <div class="token-row flex justify-between items-center px-5 py-3 border-b border-gold/10"
+           style="font-size:clamp(0.78rem,1.1vw,1rem);">
         <span class="font-fredoka text-gold-bright font-bold">Total Supply</span>
         <span class="text-[#E8C98A] font-bold">696,969,696</span>
       </div>
-      <div class="token-row flex justify-between items-center px-5 py-2.5 border-b border-gold/10"
-           style="font-size:clamp(0.72rem,1vw,0.88rem);">
+      <div class="token-row flex justify-between items-center px-5 py-3 border-b border-gold/10"
+           style="font-size:clamp(0.78rem,1.1vw,1rem);">
         <span class="font-fredoka text-gold-bright font-bold">Tax</span>
         <span class="text-[#E8C98A] font-bold">0%</span>
       </div>
-      <div class="token-row flex justify-between items-center px-5 py-2.5 border-b border-gold/10"
-           style="font-size:clamp(0.72rem,1vw,0.88rem);">
+      <div class="token-row flex justify-between items-center px-5 py-3 border-b border-gold/10"
+           style="font-size:clamp(0.78rem,1.1vw,1rem);">
         <span class="font-fredoka text-gold-bright font-bold">LP Locked</span>
         <span class="text-[#E8C98A] font-bold">100%</span>
       </div>
-      <div class="token-row flex justify-between items-center px-5 py-2.5 border-b border-gold/10"
-           style="font-size:clamp(0.72rem,1vw,0.88rem);">
+      <div class="token-row flex justify-between items-center px-5 py-3 border-b border-gold/10"
+           style="font-size:clamp(0.78rem,1.1vw,1rem);">
         <span class="font-fredoka text-gold-bright font-bold">Contract Renounced</span>
         <span class="text-[#E8C98A] font-bold">Yes</span>
       </div>
-      <div class="flex justify-between items-center px-5 py-2.5"
-           style="font-size:clamp(0.72rem,1vw,0.88rem);">
+      <div class="flex justify-between items-center px-5 py-3"
+           style="font-size:clamp(0.78rem,1.1vw,1rem);">
         <span class="font-fredoka text-gold-bright font-bold">Dev</span>
         <span class="text-[#E8C98A] font-bold">Just a degenerate</span>
       </div>
     </div>
     <!-- Help coin below table -->
-    <div class="flex justify-center items-end mt-2">
+    <div class="flex-1 flex justify-center items-end mt-2 overflow-hidden">
       <img src="public/BondageCoin_Help.png" alt="Help"
            class="h-auto"
-           style="width:clamp(110px,14vw,200px); filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));" />
+           style="width:clamp(140px,18vw,260px); filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));" />
     </div>
   </div>
 
   <!-- COL 3: Roadmap -->
-  <div class="flex flex-col px-8 py-6 overflow-hidden relative" style="padding-right:clamp(8px,14vw,180px);">
+  <div class="flex flex-col px-8 py-6 overflow-hidden relative">
     <div class="mid-title">ROADMAP*</div>
-    <div class="flex flex-col gap-2.5 flex-1 justify-center relative">
+    <div class="flex flex-col gap-3 flex-1 justify-center relative" style="padding-right:clamp(70px,12vw,240px);">
       <!-- Rope connector line -->
-      <div class="absolute top-2 bottom-8 left-[10px] w-0.5 bg-gold/40 -z-0" style="background-image: repeating-linear-gradient(to bottom, #E8B84B 0 6px, transparent 6px 12px);"></div>
-      <div class="flex items-center gap-2.5 font-fredoka text-[#E8C98A] relative z-10"
-           style="font-size:clamp(0.78rem,1.1vw,0.95rem);">
+      <div class="absolute top-2 bottom-8 left-[15px] w-0.5 bg-gold/40 -z-0" style="background-image: repeating-linear-gradient(to bottom, #E8B84B 0 6px, transparent 6px 12px);"></div>
+      <div class="flex items-center gap-3 font-fredoka text-[#E8C98A] relative z-10 whitespace-nowrap"
+           style="font-size:clamp(0.85rem,1.2vw,1.1rem);">
         <div class="roadmap-icon bg-dark">🪢</div>
         Phase 1: Launch <span class="text-green-500 ml-1">✅</span>
       </div>
-      <div class="flex items-center gap-2.5 font-fredoka text-[#E8C98A] relative z-10"
-           style="font-size:clamp(0.78rem,1.1vw,0.95rem);">
+      <div class="flex items-center gap-3 font-fredoka text-[#E8C98A] relative z-10 whitespace-nowrap"
+           style="font-size:clamp(0.85rem,1.2vw,1.1rem);">
         <div class="roadmap-icon bg-dark">🪢</div>
         Phase 2: Meme Everywhere <span class="text-green-500 ml-1">✅</span>
       </div>
-      <div class="flex items-center gap-2.5 font-fredoka text-[#E8C98A] relative z-10"
-           style="font-size:clamp(0.78rem,1.1vw,0.95rem);">
+      <div class="flex items-center gap-3 font-fredoka text-[#E8C98A] relative z-10 whitespace-nowrap"
+           style="font-size:clamp(0.85rem,1.2vw,1.1rem);">
         <div class="roadmap-icon bg-dark">🪢</div>
         Phase 3: Exchange Listings <span class="text-green-500 ml-1">✅</span>
       </div>
-      <div class="flex items-center gap-2.5 font-fredoka text-[#E8C98A] relative z-10"
-           style="font-size:clamp(0.78rem,1.1vw,0.95rem);">
+      <div class="flex items-center gap-3 font-fredoka text-[#E8C98A] relative z-10 whitespace-nowrap"
+           style="font-size:clamp(0.85rem,1.2vw,1.1rem);">
         <div class="roadmap-icon bg-dark">🪢</div>
         Phase 4: World Domination (maybe)
       </div>
       <p class="text-[#E8C98A]/50 font-nunito leading-snug mt-2 relative z-10"
-         style="font-size:0.7rem;">
+         style="font-size:clamp(0.7rem,0.9vw,0.85rem);">
         *Roadmap subject to change.<br>Probably won't.
       </p>
     </div>
     <!-- World coin absolutely positioned bottom-right -->
     <img src="public/BondageCoin_World.png" alt="World Domination"
          class="absolute bottom-0 right-0 h-auto pointer-events-none"
-         style="width:clamp(140px,18vw,240px); filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));" />
+         style="width:clamp(160px,22vw,340px); filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));" />
   </div>
 
 </div>
@@ -342,7 +343,7 @@
   <div class="flex items-center gap-4 flex-shrink-0">
     <img src="public/BondageCoin_SunGlasses.png" alt="Bondage Coin"
          class="w-auto object-contain"
-         style="height:clamp(80px,13vh,140px); margin-bottom:-1.5vh; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));" />
+         style="height:clamp(110px,18vh,190px); margin-bottom:-3.5vh; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));" />
     <div class="font-nunito font-black text-[#1A1000] leading-tight"
          style="font-size:clamp(1rem,1.9vw,1.5rem);">
       NOT FINANCIAL ADVICE.<br>JUST FINANCIAL FETISH.
@@ -353,7 +354,7 @@
   <div class="flex items-center gap-5 flex-shrink-0">
     <img src="public/BondageCoin_Uwu.png" alt="UwU"
          class="w-auto object-contain"
-         style="height:clamp(80px,13vh,140px); margin-bottom:-1.5vh; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));" />
+         style="height:clamp(110px,18vh,190px); margin-bottom:-3.5vh; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3));" />
     <div class="flex flex-col items-start gap-2">
         <span class="font-fredoka font-bold text-[#1A1000]"
               style="font-size:clamp(0.8rem,1.2vw,1rem);">
