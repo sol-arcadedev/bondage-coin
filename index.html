@@ -89,9 +89,14 @@
       color: #F2C94C;
       -webkit-text-stroke: 4px #2E1A00;
       paint-order: stroke fill;
+      /* Solid outline layer + stacked depth shadow, matching the logo style */
       text-shadow:
+        1px 1px 0 #2E1A00,
+        2px 2px 0 #2E1A00,
         3px 3px 0 #2E1A00,
-        5px 5px 0 rgba(0,0,0,0.35);
+        4px 4px 0 #2E1A00,
+        5px 5px 0 #2E1A00,
+        6px 7px 4px rgba(0,0,0,0.45);
       flex-shrink: 0;
       margin-bottom: 14px;
     }
